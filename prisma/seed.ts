@@ -1,10 +1,26 @@
 import { PrismaClient } from "@prisma/client";
+import { PrismaLibSQL } from "@prisma/adapter-libsql";
 import bcrypt from "bcryptjs";
+import "dotenv/config";
 
 // Import seed data using relative path (tsx doesn't resolve tsconfig paths)
 import { seedJobs } from "../src/lib/data/jobs.seed";
 
-const prisma = new PrismaClient();
+function createClient(): PrismaClient {
+  if (process.env.TURSO_DATABASE_URL && process.env.TURSO_AUTH_TOKEN) {
+    console.log("Using Turso database...");
+    const adapter = new PrismaLibSQL({
+      url: process.env.TURSO_DATABASE_URL,
+      authToken: process.env.TURSO_AUTH_TOKEN,
+    });
+    return new PrismaClient({ adapter });
+  }
+
+  console.log("Using local SQLite database...");
+  return new PrismaClient();
+}
+
+const prisma = createClient();
 
 async function main() {
   console.log("Seeding database...");

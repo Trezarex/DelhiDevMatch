@@ -12,12 +12,15 @@
     "db:push": "prisma db push",
     "db:seed": "prisma db seed",
     "db:studio": "prisma studio",
-    "db:reset": "prisma db push --force-reset && prisma db seed"
+    "db:reset": "prisma db push --force-reset && prisma db seed",
+    "db:setup:turso": "tsx scripts/setup-turso.ts && prisma db seed"
   },
   "prisma": {
     "seed": "tsx prisma/seed.ts"
   },
   "dependencies": {
+    "@libsql/client": "^0.17.0",
+    "@prisma/adapter-libsql": "^6.19.2",
     "@prisma/client": "^6.19.2",
     "bcryptjs": "^3.0.3",
     "clsx": "^2.1.1",
