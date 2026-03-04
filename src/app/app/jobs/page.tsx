@@ -6,7 +6,7 @@ import { FiltersPanel } from "@/components/sections/FiltersPanel";
 import { JobCard } from "@/components/sections/JobCard";
 import { JobDetailsDrawer } from "@/components/sections/JobDetailsDrawer";
 import { useUserProfile } from "@/components/sections/ProfilePanel";
-import { seedJobs } from "@/lib/data/jobs.seed";
+import { useJobs } from "@/lib/hooks/useJobs";
 import { computeTrustScore, computeMatchScore } from "@/lib/scoring";
 import type { FilterState, Job, TrustScoreBreakdown, MatchScoreBreakdown, SeniorityLevel } from "@/types";
 import { Search } from "lucide-react";
@@ -22,6 +22,7 @@ const SENIORITY_EXP: Record<SeniorityLevel, [number, number]> = {
 
 export default function JobsPage() {
   const [profile] = useUserProfile();
+  const { jobs } = useJobs();
   const [selectedJob, setSelectedJob] = useState<string | null>(null);
   const [search, setSearch] = useState("");
   const [filters, setFilters] = useState<FilterState>({
@@ -36,12 +37,12 @@ export default function JobsPage() {
   });
 
   const jobsWithScores = useMemo(() => {
-    return seedJobs.map((job) => ({
+    return jobs.map((job) => ({
       job,
       trust: computeTrustScore(job),
       match: computeMatchScore(job, profile),
     }));
-  }, [profile]);
+  }, [jobs, profile]);
 
   const filtered = useMemo(() => {
     let result = jobsWithScores;
@@ -112,7 +113,7 @@ export default function JobsPage() {
     <div className="space-y-6">
       <SectionHeading
         title="Job Explorer"
-        subtitle={`${filtered.length} of ${seedJobs.length} Delhi/NCR tech jobs`}
+        subtitle={`${filtered.length} of ${jobs.length} Delhi/NCR tech jobs`}
         align="left"
       />
 

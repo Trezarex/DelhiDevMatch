@@ -1,4 +1,4 @@
-import type { Job as PrismaJob } from "@/generated/prisma";
+import type { Job as PrismaJob } from "@prisma/client";
 import type { Job, StackTag, LocationZone, WorkMode, SourceType } from "@/types";
 
 export function dbJobToAppJob(dbJob: PrismaJob): Job {
@@ -21,29 +21,5 @@ export function dbJobToAppJob(dbJob: PrismaJob): Job {
     reports: dbJob.reports,
     companyLogo: dbJob.companyLogo ?? undefined,
     applyUrl: dbJob.applyUrl ?? undefined,
-  };
-}
-
-export function appJobToDbInput(job: Job, source: string = "manual") {
-  return {
-    id: job.id,
-    title: job.title,
-    company: job.company,
-    locationZone: job.locationZone,
-    workMode: job.workMode,
-    minExp: job.minExp,
-    maxExp: job.maxExp,
-    salaryMinLPA: job.salaryMinLPA,
-    salaryMaxLPA: job.salaryMaxLPA,
-    stackTags: JSON.stringify(job.stackTags),
-    jdText: job.jdText,
-    sourceType: job.sourceType,
-    postedAt: new Date(job.postedAt),
-    repostCount: job.repostCount,
-    verified: job.verified,
-    reports: job.reports,
-    companyLogo: job.companyLogo ?? null,
-    applyUrl: job.applyUrl ?? null,
-    source,
   };
 }

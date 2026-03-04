@@ -10,7 +10,12 @@
       "Bash(cd \"C:\\\\Users\\\\tast4\\\\OneDrive\\\\Documents\\\\MyProjects\\\\DelhiDevMatch\" && npx prisma db push 2>&1)",
       "Bash(cd \"C:\\\\Users\\\\tast4\\\\OneDrive\\\\Documents\\\\MyProjects\\\\DelhiDevMatch\" && npx prisma db seed 2>&1)",
       "Bash(cd \"C:\\\\Users\\\\tast4\\\\OneDrive\\\\Documents\\\\MyProjects\\\\DelhiDevMatch\" && npx tsx scripts/seed.ts 2>&1)",
-      "Bash(cd \"C:\\\\Users\\\\tast4\\\\OneDrive\\\\Documents\\\\MyProjects\\\\DelhiDevMatch\" && node --import tsx/esm scripts/seed.ts 2>&1)"
+      "Bash(cd \"C:\\\\Users\\\\tast4\\\\OneDrive\\\\Documents\\\\MyProjects\\\\DelhiDevMatch\" && node --import tsx/esm scripts/seed.ts 2>&1)",
+      "Bash(cd \"C:\\\\Users\\\\tast4\\\\OneDrive\\\\Documents\\\\MyProjects\\\\DelhiDevMatch\" && npm install prisma@6 @prisma/client@6 2>&1)",
+      "Bash(rm -rf \"C:\\\\Users\\\\tast4\\\\OneDrive\\\\Documents\\\\MyProjects\\\\DelhiDevMatch\\\\src\\\\generated\" \"C:\\\\Users\\\\tast4\\\\OneDrive\\\\Documents\\\\MyProjects\\\\DelhiDevMatch\\\\prisma\\\\dev.db\" \"C:\\\\Users\\\\tast4\\\\OneDrive\\\\Documents\\\\MyProjects\\\\DelhiDevMatch\\\\prisma.config.ts\" && cd \"C:\\\\Users\\\\tast4\\\\OneDrive\\\\Documents\\\\MyProjects\\\\DelhiDevMatch\" && npx prisma generate 2>&1)",
+      "Bash(cd:*)",
+      "Bash(cd \"C:/Users/tast4/OneDrive/Documents/MyProjects/DelhiDevMatch\" && npx next build 2>&1)",
+      "Bash(cd \"C:/Users/tast4/OneDrive/Documents/MyProjects/DelhiDevMatch\" && npx vitest run 2>&1)"
     ]
   }
 }

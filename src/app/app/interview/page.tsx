@@ -7,14 +7,15 @@ import { InterviewCoach } from "@/components/sections/InterviewCoach";
 import { TextareaWithCounter } from "@/components/shared/TextareaWithCounter";
 import { GlassCard } from "@/components/shared/GlassCard";
 import { Badge } from "@/components/shared/Badge";
-import { seedJobs } from "@/lib/data/jobs.seed";
+import { useJobs } from "@/lib/hooks/useJobs";
 import { MessageSquare, ArrowRight } from "lucide-react";
 
 function InterviewContent() {
   const searchParams = useSearchParams();
   const jobId = searchParams.get("job");
+  const { jobs } = useJobs();
 
-  const preselectedJob = jobId ? seedJobs.find((j) => j.id === jobId) : null;
+  const preselectedJob = jobId ? jobs.find((j) => j.id === jobId) : null;
 
   const [jdText, setJdText] = useState(preselectedJob?.jdText ?? "");
   const [jobTitle, setJobTitle] = useState(preselectedJob?.title ?? "");
@@ -30,7 +31,7 @@ function InterviewContent() {
       <div>
         <h3 className="text-sm font-medium text-white/60 mb-3">Quick Select a Job</h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-          {seedJobs.slice(0, 6).map((job) => (
+          {jobs.slice(0, 6).map((job) => (
             <GlassCard
               key={job.id}
               className="cursor-pointer hover:glow-border transition-all"

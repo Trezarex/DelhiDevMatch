@@ -7,7 +7,7 @@ import { GlassCard } from "@/components/shared/GlassCard";
 import { ProfilePanel, useUserProfile } from "@/components/sections/ProfilePanel";
 import { ScoreRing } from "@/components/shared/ScoreRing";
 import { Badge } from "@/components/shared/Badge";
-import { seedJobs } from "@/lib/data/jobs.seed";
+import { useJobs } from "@/lib/hooks/useJobs";
 import { computeTrustScore, computeMatchScore } from "@/lib/scoring";
 import {
   Briefcase, FileSearch, MessageSquare, TrendingUp,
@@ -25,9 +25,10 @@ const fadeUp = {
 
 export default function DashboardPage() {
   const [profile, setProfile] = useUserProfile();
+  const { jobs } = useJobs();
 
   // Quick stats
-  const jobsWithScores = seedJobs.map((job) => ({
+  const jobsWithScores = jobs.map((job) => ({
     job,
     trust: computeTrustScore(job),
     match: computeMatchScore(job, profile),
@@ -64,7 +65,7 @@ export default function DashboardPage() {
               <Briefcase className="w-5 h-5 text-[var(--neon-cyan)]" />
             </div>
             <div>
-              <div className="text-2xl font-bold text-white">{seedJobs.length}</div>
+              <div className="text-2xl font-bold text-white">{jobs.length}</div>
               <div className="text-xs text-white/40">Total Jobs</div>
             </div>
           </GlassCard>
