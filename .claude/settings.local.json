@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "WebFetch(domain:developer.adzuna.com)",
+      "Bash(cd \"C:\\\\Users\\\\tast4\\\\OneDrive\\\\Documents\\\\MyProjects\\\\DelhiDevMatch\" && npm install @prisma/client bcryptjs && npm install -D prisma tsx @types/bcryptjs 2>&1)",
+      "Bash(cd \"C:\\\\Users\\\\tast4\\\\OneDrive\\\\Documents\\\\MyProjects\\\\DelhiDevMatch\" && npx prisma init --datasource-provider sqlite 2>&1)",
+      "Bash(cd \"C:\\\\Users\\\\tast4\\\\OneDrive\\\\Documents\\\\MyProjects\\\\DelhiDevMatch\" && npm install dotenv 2>&1)",
+      "Bash(cd \"C:\\\\Users\\\\tast4\\\\OneDrive\\\\Documents\\\\MyProjects\\\\DelhiDevMatch\" && npx prisma generate 2>&1)",
+      "Bash(cd \"C:\\\\Users\\\\tast4\\\\OneDrive\\\\Documents\\\\MyProjects\\\\DelhiDevMatch\" && npx prisma db push 2>&1)",
+      "Bash(cd \"C:\\\\Users\\\\tast4\\\\OneDrive\\\\Documents\\\\MyProjects\\\\DelhiDevMatch\" && npx prisma db seed 2>&1)",
+      "Bash(cd \"C:\\\\Users\\\\tast4\\\\OneDrive\\\\Documents\\\\MyProjects\\\\DelhiDevMatch\" && npx tsx scripts/seed.ts 2>&1)",
+      "Bash(cd \"C:\\\\Users\\\\tast4\\\\OneDrive\\\\Documents\\\\MyProjects\\\\DelhiDevMatch\" && node --import tsx/esm scripts/seed.ts 2>&1)"
+    ]
+  }
+}

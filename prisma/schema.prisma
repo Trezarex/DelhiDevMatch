@@ -1,0 +1,59 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model Job {
+  id           String   @id @default(cuid())
+  title        String
+  company      String
+  locationZone String
+  workMode     String
+  minExp       Int
+  maxExp       Int
+  salaryMinLPA Float
+  salaryMaxLPA Float
+  stackTags    String   // JSON array stored as string
+  jdText       String
+  sourceType   String
+  postedAt     DateTime
+  repostCount  Int      @default(0)
+  verified     Boolean  @default(false)
+  reports      Int      @default(0)
+  companyLogo  String?
+  applyUrl     String?
+
+  // Pipeline metadata
+  adzunaId  String?  @unique
+  source    String   @default("seed") // "seed" | "adzuna" | "manual"
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([locationZone])
+  @@index([sourceType])
+  @@index([postedAt])
+  @@index([isActive])
+}
+
+model AdminUser {
+  id           String   @id @default(cuid())
+  username     String   @unique
+  passwordHash String
+  createdAt    DateTime @default(now())
+}
+
+model RefreshLog {
+  id          String    @id @default(cuid())
+  startedAt   DateTime  @default(now())
+  completedAt DateTime?
+  jobsFetched Int       @default(0)
+  jobsAdded   Int       @default(0)
+  jobsSkipped Int       @default(0)
+  error       String?
+  status      String    @default("running")
+}

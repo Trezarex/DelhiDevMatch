@@ -19,6 +19,7 @@ function sourceReliabilityScore(sourceType: Job["sourceType"]): number {
     case "linkedin":
       return 15;
     case "job_board":
+    case "adzuna":
       return 10;
     default:
       return 0;

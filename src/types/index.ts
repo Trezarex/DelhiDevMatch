@@ -2,7 +2,7 @@ export type LocationZone = "Delhi" | "Gurgaon" | "Noida" | "Faridabad" | "Ghazia
 
 export type WorkMode = "remote" | "hybrid" | "office";
 
-export type SourceType = "career_page" | "referral" | "linkedin" | "job_board";
+export type SourceType = "career_page" | "referral" | "linkedin" | "job_board" | "adzuna";
 
 export type SeniorityLevel = "intern" | "junior" | "mid" | "senior" | "lead" | "principal";
 
